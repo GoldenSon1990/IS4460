@@ -95,13 +95,14 @@
         <li><a href="viewparkinglot.php">View Lots</a></li>
         <li><a href="addparkinglot.php">Add Lots</a></li>
         <li><a href="deleteparkinglot.php">Delete Lots</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
 <?php
 
 require_once 'db.php';
-	    require_once 'checksession.php';
+require_once 'checksession.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
