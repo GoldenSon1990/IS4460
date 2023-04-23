@@ -157,13 +157,14 @@ function mysql_fix_string($conn, $string){
     </nav>
     <main>
         <h2>Login</h2>
-        <form method="POST">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            <input type="submit" name="submit" value="Login">
-        </form>
-    </main>
+
+	<form method="post" action="login_check.php">
+		<h2>Login</h2>
+		<label for="username">Username:</label><br>
+		<input type="text" id="username" name="username" required><br>
+		<label for="password">Password:</label><br>
+		<input type="password" id="password" name="password" required><br>
+		<input type="submit" value="Login">
+	</form>
 </body>
 </html>
