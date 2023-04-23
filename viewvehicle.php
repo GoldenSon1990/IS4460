@@ -85,6 +85,7 @@
         <li><a href="HP.php"> Home Page </a></li>
 	<li><a href="addvehicle.php">Add Vehicle</a></li>
         <li><a href="deletevehicle.php">Delete Vehicle</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
