@@ -95,6 +95,7 @@
         <li><a href="viewviolation.php">View Violation</a></li>
         <li><a href="addviolation.php">Add violation</a></li>
         <li><a href="deleteviolation.php">Delete violation</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
