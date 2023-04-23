@@ -109,7 +109,7 @@ if ($conn->connect_error) die($conn->connect_error);
 
 echo <<<_END
 	<pre>
-	
+	<a href="Logout.php">Logout</a>
 		
 _END;
 
@@ -124,6 +124,7 @@ for($j=0; $j<$rows; $j++) {
 	
 	echo <<<_END
 	<pre>
+		
 		<tr>
 		
 		<td><a href='updatevehicle.php?vehicle_id=$row[VEHICLE_ID]' >$row[License_Plate]</a>
