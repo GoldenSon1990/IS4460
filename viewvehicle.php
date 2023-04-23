@@ -94,7 +94,7 @@
 	  
         <thead>
 <tr>
-
+	<th>License_Plate</th>
 	<th>Make</th>
 	<th>Model</th>
 	<th>Color</th>
@@ -126,7 +126,7 @@ for($j=0; $j<$rows; $j++) {
 	<pre>
 		<tr>
 		
-		
+		<td><a href='updatevehicle.php?vehicle_id=$row[VEHICLE_ID]' >$row[License_Plate]</a>
 		<td>$row[Make]
 		<td>$row[Model]
 		<td>$row[Color]
