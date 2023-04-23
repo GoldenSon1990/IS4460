@@ -83,8 +83,7 @@
     <nav>
       <ul>
         <li><a href="HP.php"> Home Page </a></li>
-		<li><a href="addvehicle.php">Add Vehicle</a></li>
-        <li><a href="updatevehicle.php">Update Vehicle</a></li>
+	<li><a href="addvehicle.php">Add Vehicle</a></li>
         <li><a href="deletevehicle.php">Delete Vehicle</a></li>
       </ul>
     </nav>
