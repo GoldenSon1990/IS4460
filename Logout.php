@@ -10,7 +10,7 @@ function destroy_session_and_data(){
 	session_destroy();
 }
 
-echo "Please login <a href='authenticate.php'> HERE </a>";
+echo "Please login <a href='login.php'> HERE </a>";
 
 
 
