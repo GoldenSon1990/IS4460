@@ -84,6 +84,7 @@
         <li><a href="HP.php"> Home Page </a></li>
 	 <li><a href="addpermit.php">Add Permit</a></li>
         <li><a href="deletepermit.php">Delete permit</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
