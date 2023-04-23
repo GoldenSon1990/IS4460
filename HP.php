@@ -88,15 +88,23 @@
     <header>
       <h1>Parking Permit Website</h1>
     </header>
+
     <nav>
       <ul>
-        <li><a href="createvehicle.php">Violations</a></li>
-        <li><a href="updatevehicle.php">Permits</a></li>
+        <li><a href="viewviolation.php">Violations</a></li>
+        <li><a href="viewpermit.php">Permits</a></li>
         <li><a href="viewvehicle.php">Vehicle Information</a></li>
-        <li><a href="deletevehicle.php">Payments</a></li>
+        <li><a href="viewparkinglot.php">Parking Lots</a></li>
+		<li><a href="viewdriver.php">Driver</a></li>
+		<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
       <h2>Welcome to the Parking Permit Website</h2>
+  </body>
+  	 <body>
+    <div style="text-align: center;">
+      <img src="LATW.jpg" alt="My Image">
+    </div>
   </body>
 </html>
