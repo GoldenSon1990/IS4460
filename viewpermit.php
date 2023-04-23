@@ -124,8 +124,7 @@ for($j=0; $j<$rows; $j++) {
 	<pre>
 		<tr>
 		
-		
-		<td>$row[PERMIT_ID]
+		<td><a href='updatepermit.php?PERMIT_ID=$row[PERMIT_ID]' >$row[PERMIT_ID]</a>
 		<td>$row[Permit_Type]
 		<td>$row[Expire_Date]
 		
