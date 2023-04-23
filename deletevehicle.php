@@ -131,6 +131,7 @@ echo <<<_END
     <th>Year</th>
     <th>Delete</th>
   </tr>
+ <a href="Logout.php">Logout</a>
 _END;
 
 $rows = $result->num_rows;
