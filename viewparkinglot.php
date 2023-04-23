@@ -86,6 +86,7 @@
 		<li><a href="addparkinglot.php">Add Lots</a></li>
         <li><a href="updateparkinglot.php">Update Lots</a></li>
         <li><a href="deleteparkinglot.php">Delete Lots</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
