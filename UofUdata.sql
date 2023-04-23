@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Apr 21, 2023 at 05:20 AM
--- Server version: 5.7.39
--- PHP Version: 7.4.33
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 23, 2023 at 07:32 AM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,28 +18,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `UU Parking System`
+-- Database: `parking`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `DRIVER`
+-- Table structure for table `driver`
 --
 
-CREATE TABLE `DRIVER` (
-  `DRIVER_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `driver`;
+CREATE TABLE IF NOT EXISTS `driver` (
+  `DRIVER_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Type` char(3) DEFAULT NULL,
   `First_Name` varchar(255) DEFAULT NULL,
   `Last_Name` varchar(255) DEFAULT NULL,
-  `Address` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`DRIVER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `DRIVER`
+-- Dumping data for table `driver`
 --
 
-INSERT INTO `DRIVER` (`DRIVER_ID`, `Type`, `First_Name`, `Last_Name`, `Address`) VALUES
+INSERT INTO `driver` (`DRIVER_ID`, `Type`, `First_Name`, `Last_Name`, `Address`) VALUES
 (1, 'U', 'John', 'Doe', '123 Main St'),
 (2, 'U', 'Jane', 'Doe', '456 Main St'),
 (3, 'HU', 'Jim', 'Smith', '789 Main St'),
@@ -59,15 +61,17 @@ INSERT INTO `DRIVER` (`DRIVER_ID`, `Type`, `First_Name`, `Last_Name`, `Address`)
 (17, 'U', 'Mark', 'Jackson', '359 Main St'),
 (18, 'A', 'Elizabeth', 'White', '987 Main St'),
 (19, 'USA', 'Steven', 'Harris', '654 Main St'),
-(20, 'A', 'Jennifer', 'Clark', '178 Main St');
+(20, 'A', 'Jennifer', 'Clark', '178 Main St'),
+(112, '0P', 'Sum', 'Ghai', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `PARKING_LOT`
+-- Table structure for table `parking_lot`
 --
 
-CREATE TABLE `PARKING_LOT` (
+DROP TABLE IF EXISTS `parking_lot`;
+CREATE TABLE IF NOT EXISTS `parking_lot` (
   `LOT_ID` int(11) NOT NULL,
   `Permit_Type_1` varchar(10) DEFAULT NULL,
   `Permit_Type_2` varchar(10) DEFAULT NULL,
@@ -76,10 +80,10 @@ CREATE TABLE `PARKING_LOT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `PARKING_LOT`
+-- Dumping data for table `parking_lot`
 --
 
-INSERT INTO `PARKING_LOT` (`LOT_ID`, `Permit_Type_1`, `Permit_Type_2`, `Address`, `Capacity`) VALUES
+INSERT INTO `parking_lot` (`LOT_ID`, `Permit_Type_1`, `Permit_Type_2`, `Address`, `Capacity`) VALUES
 (1, 'U', 'A', '123 Main St', 50),
 (2, 'U', 'A', '456 1st Ave', 100),
 (3, 'A', 'HU', '789 Elm St', 75),
@@ -99,66 +103,58 @@ INSERT INTO `PARKING_LOT` (`LOT_ID`, `Permit_Type_1`, `Permit_Type_2`, `Address`
 (17, 'CA', NULL, '1414 Walnut St', 85),
 (18, 'DT', NULL, '1515 Ash St', 95),
 (19, 'USA', NULL, '1616 Birch St', 80),
-(20, 'U', NULL, '1717 3rd Ave', 110);
+(20, 'U', NULL, '1717 3rd Ave', 110),
+(23, NULL, NULL, '1234 nah mah place', 12000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `PARKING_SPACE`
+-- Table structure for table `passwords`
 --
 
-CREATE TABLE `PARKING_SPACE` (
-  `SPACE_ID` int(11) NOT NULL,
-  `LOT_ID` int(11) DEFAULT NULL,
-  `Field` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `passwords`;
+CREATE TABLE IF NOT EXISTS `passwords` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_user_id` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `PARKING_SPACE`
+-- Dumping data for table `passwords`
 --
 
-INSERT INTO `PARKING_SPACE` (`SPACE_ID`, `LOT_ID`, `Field`) VALUES
-(1, 1, 'North Lot, Section A'),
-(2, 1, 'North Lot, Section B'),
-(3, 1, 'North Lot, Section C'),
-(4, 2, 'East Lot, Section A'),
-(5, 2, 'East Lot, Section B'),
-(6, 2, 'East Lot, Section C'),
-(7, 3, 'South Lot, Section A'),
-(8, 3, 'South Lot, Section B'),
-(9, 3, 'South Lot, Section C'),
-(10, 4, 'West Lot, Section A'),
-(11, 4, 'West Lot, Section B'),
-(12, 4, 'West Lot, Section C'),
-(13, 5, 'North Lot, Section A'),
-(14, 5, 'North Lot, Section B'),
-(15, 5, 'North Lot, Section C'),
-(16, 6, 'East Lot, Section A'),
-(17, 6, 'East Lot, Section B'),
-(18, 6, 'East Lot, Section C'),
-(19, 7, 'South Lot, Section A'),
-(20, 7, 'South Lot, Section B');
+INSERT INTO `passwords` (`id`, `username`, `password`, `user_id`) VALUES
+(1, 'johnsmith', 'password1', 1),
+(2, 'janedoe', 'password2', 2),
+(3, 'bobsmith', 'password3', 3),
+(4, 'maryjones', 'password4', 4),
+(5, 'peterparker', 'password5', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `PAYMENT`
+-- Table structure for table `payment`
 --
 
-CREATE TABLE `PAYMENT` (
-  `PAYMENT_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `payment`;
+CREATE TABLE IF NOT EXISTS `payment` (
+  `PAYMENT_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Credit_Card_No` varchar(255) DEFAULT NULL,
   `Amount` decimal(10,2) NOT NULL,
   `Check_No` varchar(255) NOT NULL,
   `Cash` decimal(10,2) DEFAULT NULL,
-  `Date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Date` date NOT NULL,
+  PRIMARY KEY (`PAYMENT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `PAYMENT`
+-- Dumping data for table `payment`
 --
 
-INSERT INTO `PAYMENT` (`PAYMENT_ID`, `Credit_Card_No`, `Amount`, `Check_No`, `Cash`, `Date`) VALUES
+INSERT INTO `payment` (`PAYMENT_ID`, `Credit_Card_No`, `Amount`, `Check_No`, `Cash`, `Date`) VALUES
 (1, '1234567812345678', '5.00', 'CHK001', NULL, '2023-01-01'),
 (2, '2345678923456789', '7.00', 'CHK002', NULL, '2023-01-02'),
 (3, NULL, '6.00', 'CHK003', '6.00', '2023-01-03'),
@@ -183,25 +179,30 @@ INSERT INTO `PAYMENT` (`PAYMENT_ID`, `Credit_Card_No`, `Amount`, `Check_No`, `Ca
 -- --------------------------------------------------------
 
 --
--- Table structure for table `PERMIT`
+-- Table structure for table `permit`
 --
 
-CREATE TABLE `PERMIT` (
-  `PERMIT_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `permit`;
+CREATE TABLE IF NOT EXISTS `permit` (
+  `PERMIT_ID` int(11) NOT NULL AUTO_INCREMENT,
   `VEHICLE_ID` int(11) DEFAULT NULL,
   `DRIVER_ID` int(11) DEFAULT NULL,
   `PAYMENT_ID` int(11) DEFAULT NULL,
   `Permit_Type` varchar(10) DEFAULT NULL,
   `Purchase_Date` date DEFAULT NULL,
   `Expire_Date` date DEFAULT NULL,
-  `Cost` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Cost` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`PERMIT_ID`),
+  KEY `VEHICLE_ID` (`VEHICLE_ID`),
+  KEY `DRIVER_ID` (`DRIVER_ID`),
+  KEY `PAYMENT_ID` (`PAYMENT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `PERMIT`
+-- Dumping data for table `permit`
 --
 
-INSERT INTO `PERMIT` (`PERMIT_ID`, `VEHICLE_ID`, `DRIVER_ID`, `PAYMENT_ID`, `Permit_Type`, `Purchase_Date`, `Expire_Date`, `Cost`) VALUES
+INSERT INTO `permit` (`PERMIT_ID`, `VEHICLE_ID`, `DRIVER_ID`, `PAYMENT_ID`, `Permit_Type`, `Purchase_Date`, `Expire_Date`, `Cost`) VALUES
 (1, 1, 1, 1, 'U', '2022-01-01', '2022-12-31', '100.00'),
 (2, 2, 2, 2, 'U', '2022-02-01', '2022-12-31', '75.00'),
 (3, 3, 3, 3, 'HU', '2022-03-01', '2022-12-31', '50.00'),
@@ -218,26 +219,30 @@ INSERT INTO `PERMIT` (`PERMIT_ID`, `VEHICLE_ID`, `DRIVER_ID`, `PAYMENT_ID`, `Per
 (14, 14, 14, 14, 'DT', '2022-02-01', '2022-12-31', '40.00'),
 (15, 15, 15, 15, 'U', '2022-03-01', '2022-12-31', '30.00'),
 (16, 16, 16, 16, 'A', '2022-04-01', '2022-12-31', '20.00'),
-(17, 17, 17, 17, 'U', '2022-05-01', '2022-12-31', '15.00');
+(17, 17, 17, 17, 'U', '2022-05-01', '2022-12-31', '15.00'),
+(18, NULL, NULL, NULL, 'SUX', '2045-08-25', '3023-01-04', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ROLE`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE `ROLE` (
-  `ROLE_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `ROLE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`ROLE_ID`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ROLE`
+-- Dumping data for table `roles`
 --
 
-INSERT INTO `ROLE` (`ROLE_ID`, `username`, `password`, `role`) VALUES
+INSERT INTO `roles` (`ROLE_ID`, `username`, `password`, `role`) VALUES
 (1, 'bsmith', 'mysecret', 'admin'),
 (2, 'pjones', 'acrobat', 'user'),
 (3, 'Charlie789', 'password3', 'user'),
@@ -262,32 +267,58 @@ INSERT INTO `ROLE` (`ROLE_ID`, `username`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `VEHICLE`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `VEHICLE` (
-  `VEHICLE_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'bsmith', '$2y$10$lREJyAMBkVHmWmyXHi3XlufFxsUgBrW4BqPDuc2HM8oGVjDv0YRtW'),
+(2, 'jane_smith', 'password456'),
+(3, 'bob_johnson', 'password789');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehicle`
+--
+
+DROP TABLE IF EXISTS `vehicle`;
+CREATE TABLE IF NOT EXISTS `vehicle` (
+  `VEHICLE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `DRIVER_ID` int(11) DEFAULT NULL,
   `License_Plate` varchar(255) DEFAULT NULL,
   `Make` varchar(255) DEFAULT NULL,
   `Model` varchar(255) DEFAULT NULL,
   `Color` varchar(255) DEFAULT NULL,
-  `Year` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Year` int(11) DEFAULT NULL,
+  PRIMARY KEY (`VEHICLE_ID`),
+  KEY `DRIVER_ID` (`DRIVER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `VEHICLE`
+-- Dumping data for table `vehicle`
 --
 
-INSERT INTO `VEHICLE` (`VEHICLE_ID`, `DRIVER_ID`, `License_Plate`, `Make`, `Model`, `Color`, `Year`) VALUES
+INSERT INTO `vehicle` (`VEHICLE_ID`, `DRIVER_ID`, `License_Plate`, `Make`, `Model`, `Color`, `Year`) VALUES
 (1, 1, 'ABC123', 'Toyota', 'Camry', 'Blue', 2019),
-(2, 2, 'DEF456', 'Honda', 'Civic', 'Red', 2020),
+(2, 2, 'DEF456', 'Honda', 'Civic', 'Obama', 2020),
 (3, 3, 'GHI789', 'Ford', 'Fusion', 'White', 2018),
 (4, 4, 'JKL012', 'Chevrolet', 'Malibu', 'Black', 2021),
 (5, 5, 'MNO345', 'Nissan', 'Altima', 'Silver', 2019),
 (6, 6, 'PQR678', 'Hyundai', 'Sonata', 'Blue', 2022),
-(7, 7, 'STU901', 'Volkswagen', 'Passat', 'Green', 2018),
-(8, 8, 'VWX234', 'Subaru', 'Legacy', 'Gray', 2017),
+(7, 7, 'XXG456', 'Volkswagen', 'Passatsss', 'Silver', 2018),
+(8, 8, 'VWX234', 'Subaru', 'Legacyxxxxxxxx', 'Gray', 2017),
 (9, 9, 'YZA567', 'Mazda', 'Mazda6', 'Red', 2016),
 (10, 10, 'BCD890', 'Kia', 'Optima', 'White', 2020),
 (11, 11, 'EFG123', 'Audi', 'A4', 'Silver', 2021),
@@ -304,21 +335,24 @@ INSERT INTO `VEHICLE` (`VEHICLE_ID`, `DRIVER_ID`, `License_Plate`, `Make`, `Mode
 -- --------------------------------------------------------
 
 --
--- Table structure for table `VIOLATION`
+-- Table structure for table `violation`
 --
 
-CREATE TABLE `VIOLATION` (
-  `VIOLATION_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `violation`;
+CREATE TABLE IF NOT EXISTS `violation` (
+  `VIOLATION_ID` int(11) NOT NULL AUTO_INCREMENT,
   `PAYMENT_ID` int(11) DEFAULT NULL,
   `Violation_Type` varchar(255) DEFAULT NULL,
-  `Date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Date` date DEFAULT NULL,
+  PRIMARY KEY (`VIOLATION_ID`),
+  KEY `PAYMENT_ID` (`PAYMENT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2335 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `VIOLATION`
+-- Dumping data for table `violation`
 --
 
-INSERT INTO `VIOLATION` (`VIOLATION_ID`, `PAYMENT_ID`, `Violation_Type`, `Date`) VALUES
+INSERT INTO `violation` (`VIOLATION_ID`, `PAYMENT_ID`, `Violation_Type`, `Date`) VALUES
 (1, 1, 'Meter Violation', '2023-01-01'),
 (2, 2, 'Overtime Parking', '2023-01-02'),
 (3, 3, 'Regulation Violation', '2023-01-03'),
@@ -338,25 +372,28 @@ INSERT INTO `VIOLATION` (`VIOLATION_ID`, `PAYMENT_ID`, `Violation_Type`, `Date`)
 (17, 17, 'Unauthorized Vehicle on Sidewalk', '2023-01-17'),
 (18, 18, 'Disabled Parking', '2023-01-18'),
 (19, 19, 'Meter Violation', '2023-01-19'),
-(20, 20, 'Overtime Parking', '2023-01-20');
+(20, 20, 'Overtime Parking', '2023-01-20'),
+(2334, NULL, 'Being an ass', '2024-06-09');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `VIOLATION_TYPE`
+-- Table structure for table `violation_type`
 --
 
-CREATE TABLE `VIOLATION_TYPE` (
-  `VIOLATION_TYPE_ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `violation_type`;
+CREATE TABLE IF NOT EXISTS `violation_type` (
+  `VIOLATION_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Violation_Name` varchar(255) DEFAULT NULL,
-  `Amount_Due` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Amount_Due` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`VIOLATION_TYPE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `VIOLATION_TYPE`
+-- Dumping data for table `violation_type`
 --
 
-INSERT INTO `VIOLATION_TYPE` (`VIOLATION_TYPE_ID`, `Violation_Name`, `Amount_Due`) VALUES
+INSERT INTO `violation_type` (`VIOLATION_TYPE_ID`, `Violation_Name`, `Amount_Due`) VALUES
 (1, 'Meter Violation', '10.00'),
 (2, 'Overtime Parking', '15.00'),
 (3, 'Regulation Violation', '20.00'),
@@ -368,151 +405,28 @@ INSERT INTO `VIOLATION_TYPE` (`VIOLATION_TYPE_ID`, `Violation_Name`, `Amount_Due
 (9, 'Disabled Parking', '50.00');
 
 --
--- Indexes for dumped tables
---
-
---
--- Indexes for table `DRIVER`
---
-ALTER TABLE `DRIVER`
-  ADD PRIMARY KEY (`DRIVER_ID`);
-
---
--- Indexes for table `PARKING_LOT`
---
-ALTER TABLE `PARKING_LOT`
-  ADD PRIMARY KEY (`LOT_ID`);
-
---
--- Indexes for table `PARKING_SPACE`
---
-ALTER TABLE `PARKING_SPACE`
-  ADD PRIMARY KEY (`SPACE_ID`),
-  ADD KEY `LOT_ID` (`LOT_ID`);
-
---
--- Indexes for table `PAYMENT`
---
-ALTER TABLE `PAYMENT`
-  ADD PRIMARY KEY (`PAYMENT_ID`);
-
---
--- Indexes for table `PERMIT`
---
-ALTER TABLE `PERMIT`
-  ADD PRIMARY KEY (`PERMIT_ID`),
-  ADD KEY `VEHICLE_ID` (`VEHICLE_ID`),
-  ADD KEY `DRIVER_ID` (`DRIVER_ID`),
-  ADD KEY `PAYMENT_ID` (`PAYMENT_ID`);
-
---
--- Indexes for table `ROLE`
---
-ALTER TABLE `ROLE`
-  ADD PRIMARY KEY (`ROLE_ID`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indexes for table `VEHICLE`
---
-ALTER TABLE `VEHICLE`
-  ADD PRIMARY KEY (`VEHICLE_ID`),
-  ADD KEY `DRIVER_ID` (`DRIVER_ID`);
-
---
--- Indexes for table `VIOLATION`
---
-ALTER TABLE `VIOLATION`
-  ADD PRIMARY KEY (`VIOLATION_ID`),
-  ADD KEY `PAYMENT_ID` (`PAYMENT_ID`);
-
---
--- Indexes for table `VIOLATION_TYPE`
---
-ALTER TABLE `VIOLATION_TYPE`
-  ADD PRIMARY KEY (`VIOLATION_TYPE_ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `DRIVER`
---
-ALTER TABLE `DRIVER`
-  MODIFY `DRIVER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `PARKING_SPACE`
---
-ALTER TABLE `PARKING_SPACE`
-  MODIFY `SPACE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `PAYMENT`
---
-ALTER TABLE `PAYMENT`
-  MODIFY `PAYMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `PERMIT`
---
-ALTER TABLE `PERMIT`
-  MODIFY `PERMIT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `ROLE`
---
-ALTER TABLE `ROLE`
-  MODIFY `ROLE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `VEHICLE`
---
-ALTER TABLE `VEHICLE`
-  MODIFY `VEHICLE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `VIOLATION`
---
-ALTER TABLE `VIOLATION`
-  MODIFY `VIOLATION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `VIOLATION_TYPE`
---
-ALTER TABLE `VIOLATION_TYPE`
-  MODIFY `VIOLATION_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `PARKING_SPACE`
+-- Constraints for table `permit`
 --
-ALTER TABLE `PARKING_SPACE`
-  ADD CONSTRAINT `parking_space_ibfk_1` FOREIGN KEY (`LOT_ID`) REFERENCES `PARKING_LOT` (`LOT_ID`);
+ALTER TABLE `permit`
+  ADD CONSTRAINT `permit_ibfk_1` FOREIGN KEY (`VEHICLE_ID`) REFERENCES `vehicle` (`VEHICLE_ID`),
+  ADD CONSTRAINT `permit_ibfk_2` FOREIGN KEY (`DRIVER_ID`) REFERENCES `driver` (`DRIVER_ID`),
+  ADD CONSTRAINT `permit_ibfk_3` FOREIGN KEY (`PAYMENT_ID`) REFERENCES `payment` (`PAYMENT_ID`);
 
 --
--- Constraints for table `PERMIT`
+-- Constraints for table `vehicle`
 --
-ALTER TABLE `PERMIT`
-  ADD CONSTRAINT `permit_ibfk_1` FOREIGN KEY (`VEHICLE_ID`) REFERENCES `VEHICLE` (`VEHICLE_ID`),
-  ADD CONSTRAINT `permit_ibfk_2` FOREIGN KEY (`DRIVER_ID`) REFERENCES `DRIVER` (`DRIVER_ID`),
-  ADD CONSTRAINT `permit_ibfk_3` FOREIGN KEY (`PAYMENT_ID`) REFERENCES `PAYMENT` (`PAYMENT_ID`);
+ALTER TABLE `vehicle`
+  ADD CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`DRIVER_ID`) REFERENCES `driver` (`DRIVER_ID`);
 
 --
--- Constraints for table `VEHICLE`
+-- Constraints for table `violation`
 --
-ALTER TABLE `VEHICLE`
-  ADD CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`DRIVER_ID`) REFERENCES `DRIVER` (`DRIVER_ID`);
-
---
--- Constraints for table `VIOLATION`
---
-ALTER TABLE `VIOLATION`
-  ADD CONSTRAINT `violation_ibfk_1` FOREIGN KEY (`PAYMENT_ID`) REFERENCES `PAYMENT` (`PAYMENT_ID`);
+ALTER TABLE `violation`
+  ADD CONSTRAINT `violation_ibfk_1` FOREIGN KEY (`PAYMENT_ID`) REFERENCES `payment` (`PAYMENT_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
