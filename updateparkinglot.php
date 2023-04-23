@@ -93,6 +93,7 @@
         <li><a href="viewparkinglot.php">View Parking Lot</a></li>
         <li><a href="addparkinglot.php">Add Parking Lot</a></li>
         <li><a href="deleteparkinglot.php">Delete Parking Lot</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
