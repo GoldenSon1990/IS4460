@@ -82,8 +82,7 @@
     <nav>
       <ul>
         <li><a href="HP.php"> Home Page </a></li>
-		<li><a href="adddriver.php">Add Driver</a></li>
-        <li><a href="updatedriver.php">Update Driver</a></li>
+	<li><a href="adddriver.php">Add Driver</a></li>
         <li><a href="deletedriver.php">Delete Driver</a></li>
       </ul>
     </nav>
