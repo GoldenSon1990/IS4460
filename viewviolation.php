@@ -83,7 +83,6 @@
       <ul>
         <li><a href="HP.php"> Home Page </a></li>
 		<li><a href="addviolation.php">Add violation</a></li>
-        <li><a href="updateviolation.php">Update violation</a></li>
         <li><a href="deleteviolation.php">Delete violation</a></li>
       </ul>
     </nav>
@@ -124,8 +123,7 @@ for($j=0; $j<$rows; $j++) {
 	<pre>
 		<tr>
 		
-		
-		<td>$row[VIOLATION_ID]
+		<td><a href='updateviolation.php?VIOLATION_ID=$row[VIOLATION_ID]' >$row[VIOLATION_ID]</a>
 		<td>$row[Violation_Type]
 		<td>$row[Date]
 	</pre>
