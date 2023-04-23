@@ -108,6 +108,8 @@ if ($conn->connect_error) die($conn->connect_error);
 echo <<<_END
 <form action="addvehicle.php" method="post">
 	<pre>
+<a href="Logout.php">Logout</a>
+
 	Make <input type="text" name="Make"></br></br>
 	Model <input type="text" name="Model"></br></br>
 	Color <input type="text" name="Color"></br></br>
