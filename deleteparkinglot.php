@@ -111,7 +111,7 @@ if(isset($_POST['delete']))
 {
     $LOTID_ID = $_POST['id'];
 
-    $query = "DELETE FROM parking_lot WHERE LOT_ID='$LOT_ID'";
+    $query = "DELETE FROM parking_lot WHERE LOT_ID='$LOTID_ID'";
     $result = $conn->query($query);
     if (!$result) die($conn->error);
 
