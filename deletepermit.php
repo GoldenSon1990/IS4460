@@ -94,14 +94,15 @@
         <li><a href="HP.php">Home</a></li>
         <li><a href="viewpermit.php">View Permit</a></li>
         <li><a href="addpermit.php">Add Permit</a></li>
-		<li><a href="updatepermit.php">Update Permit</a></li>
+	<li><a href="updatepermit.php">Update Permit</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
 <?php
 
 require_once 'db.php';
-	    require_once 'checksession.php';
+require_once 'checksession.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
