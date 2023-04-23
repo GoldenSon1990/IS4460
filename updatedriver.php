@@ -93,6 +93,7 @@
         <li><a href="viewdriver.php">View drivers</a></li>
         <li><a href="adddriver.php">Add drivers</a></li>
         <li><a href="deletedrivers.php">Delete drivers</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
@@ -101,7 +102,7 @@
         <label for="DRIVER_ID">Driver:</label>
         <?php
           require_once 'db.php';
-	      require_once 'checksession.php';
+	  require_once 'checksession.php';
           $conn = new mysqli($hn, $un, $pw, $db);
           if ($conn->connect_error) die($conn->connect_error);
 		  
