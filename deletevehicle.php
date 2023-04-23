@@ -94,7 +94,8 @@
         <li><a href="HP.php">Home</a></li>
         <li><a href="viewvehicle.php">View Vehicles</a></li>
         <li><a href="addvehicle.php">Add Vehicle</a></li>
-		<li><a href="updatevehicle.php">Update Vehicle</a></li>
+	<li><a href="updatevehicle.php">Update Vehicle</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
