@@ -101,6 +101,7 @@
         <label for="LOT_ID">Parking Lot:</label>
         <?php
           require_once 'db.php';
+	      require_once 'checksession.php';
           $conn = new mysqli($hn, $un, $pw, $db);
           if ($conn->connect_error) die($conn->connect_error);
 		  
