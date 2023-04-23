@@ -94,14 +94,15 @@
         <li><a href="HP.php">Home</a></li>
         <li><a href="viewviolation.php">View violation</a></li>
         <li><a href="addviolation.php">Add violation</a></li>
-		<li><a href="updateviolation.php">Update violation</a></li>
+	<li><a href="updateviolation.php">Update violation</a></li>
+	<li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
     <main>
 <?php
 
 require_once 'db.php';
-	    require_once 'checksession.php';
+require_once 'checksession.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
