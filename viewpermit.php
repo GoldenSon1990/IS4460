@@ -82,7 +82,7 @@
     <nav>
       <ul>
         <li><a href="HP.php"> Home Page </a></li>
-	<li><a href="addpermit.php">Add Permit</a></li>
+	 <li><a href="addpermit.php">Add Permit</a></li>
         <li><a href="deletepermit.php">Delete permit</a></li>
       </ul>
     </nav>
