@@ -94,6 +94,7 @@
         <li><a href="HP.php">Home</a></li>
         <li><a href="viewparkinglot.php">View Lots</a></li>
         <li><a href="addparkinglot.php">Add Lots</a></li>
+	<li><a href="logout.php">Logout</a></li>
 
       </ul>
     </nav>
@@ -101,7 +102,7 @@
 <?php
 
 require_once 'db.php';
-	    require_once 'checksession.php';
+require_once 'checksession.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
