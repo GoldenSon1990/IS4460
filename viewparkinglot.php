@@ -83,8 +83,7 @@
     <nav>
       <ul>
         <li><a href="HP.php"> Home Page </a></li>
-		<li><a href="addparkinglot.php">Add Lots</a></li>
-        <li><a href="updateparkinglot.php">Update Lots</a></li>
+	<li><a href="addparkinglot.php">Add Lots</a></li>
         <li><a href="deleteparkinglot.php">Delete Lots</a></li>
 	<li><a href="logout.php">Logout</a></li>
       </ul>
@@ -96,6 +95,8 @@
         <thead>
 <tr>
 	<th>LOT ID</th>
+	<th>Permit_Type_1</th>
+	<th>Permit_Type_2</th>
 	<th>Address</th>
 	<th>Capacity</th>
 
@@ -128,7 +129,9 @@ for($j=0; $j<$rows; $j++) {
 	<pre>
 		<tr>
 		
-		<td><a href='updateparkinglot.php?lot_id=$row[LOT_ID]' >$row[Permit_Type_1]</a>
+		<td><a href='updateparkinglot.php?LOT_ID=$row[LOT_ID]' >$row[LOT_ID]</a>
+		<td>$row[Permit_Type_1]
+		<td>$row[Permit_Type_2]
 		<td>$row[Address]
 		<td>$row[Capacity]
 
