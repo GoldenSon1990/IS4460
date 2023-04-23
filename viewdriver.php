@@ -93,11 +93,10 @@
 	  
         <thead>
 <tr>
-
+	<th>DriverID</th>
 	<th>First Name</th>
 	<th>Last Name</th>
 	<th>Type</th>
-	<th>DriverID</th>
 </tr>
 			<?php
 
@@ -125,11 +124,10 @@ for($j=0; $j<$rows; $j++) {
 	<pre>
 		<tr>
 		
-		
+		<td><a href='updatedriver.php?DRIVER_ID=$row[DRIVER_ID]' >$row[DRIVER_ID]</a>
 		<td>$row[First_Name]
 		<td>$row[Last_Name]
 		<td>$row[Type]
-		<td>$row[DRIVER_ID]
 	</pre>
 	
 _END;
